@@ -61,12 +61,8 @@
 		7283C36826B766930044D8E9 /* Objective C Currency Conversion App */ = {
 			isa = PBXGroup;
 			children = (
-				7283C36926B766930044D8E9 /* AppDelegate.h */,
-				7283C36A26B766930044D8E9 /* AppDelegate.m */,
-				7283C36C26B766930044D8E9 /* SceneDelegate.h */,
-				7283C36D26B766930044D8E9 /* SceneDelegate.m */,
-				7283C36F26B766930044D8E9 /* ViewController.h */,
-				7283C37026B766930044D8E9 /* ViewController.m */,
+				7283C38226B7669C0044D8E9 /* App Startup */,
+				7283C38326B766AA0044D8E9 /* View Controllers */,
 				7283C37226B766930044D8E9 /* Main.storyboard */,
 				7283C37526B766930044D8E9 /* Assets.xcassets */,
 				7283C37726B766930044D8E9 /* LaunchScreen.storyboard */,
@@ -74,6 +70,26 @@
 				7283C37B26B766930044D8E9 /* main.m */,
 			);
 			path = "Objective C Currency Conversion App";
+			sourceTree = "<group>";
+		};
+		7283C38226B7669C0044D8E9 /* App Startup */ = {
+			isa = PBXGroup;
+			children = (
+				7283C36926B766930044D8E9 /* AppDelegate.h */,
+				7283C36A26B766930044D8E9 /* AppDelegate.m */,
+				7283C36C26B766930044D8E9 /* SceneDelegate.h */,
+				7283C36D26B766930044D8E9 /* SceneDelegate.m */,
+			);
+			path = "App Startup";
+			sourceTree = "<group>";
+		};
+		7283C38326B766AA0044D8E9 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7283C37026B766930044D8E9 /* ViewController.m */,
+				7283C36F26B766930044D8E9 /* ViewController.h */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
