@@ -11,6 +11,14 @@
 
 // MARK: - Properties
 
+UILabel* cnyAmount;
+UILabel* gbpAmount;
+UILabel* eurAmount;
+
+UILabel* cnyUnitLabel;
+UILabel* gbpUnitLabel;
+UILabel* eurUnitLabel;
+
 
 // MARK: - Lifecycle
 
@@ -25,6 +33,10 @@
 
 
 // MARK: - Intents
+
+- (void)setDollarValueTo:(double)newValue {
+    // TODO: Implement
+}
 
 
 // MARK: - Helper Methods
