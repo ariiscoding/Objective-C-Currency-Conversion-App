@@ -14,6 +14,7 @@
 		7283C37926B766930044D8E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7283C37726B766930044D8E9 /* LaunchScreen.storyboard */; };
 		7283C37C26B766930044D8E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7283C37B26B766930044D8E9 /* main.m */; };
 		72D99FE826B76F84009DF7C7 /* CurrencyInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D99FE726B76F84009DF7C7 /* CurrencyInputViewController.m */; };
+		72D99FED26B79C98009DF7C7 /* CurrencyOutputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D99FEC26B79C98009DF7C7 /* CurrencyOutputViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,8 @@
 		7283C37B26B766930044D8E9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		72D99FE626B76F39009DF7C7 /* CurrencyInputViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrencyInputViewController.h; sourceTree = "<group>"; };
 		72D99FE726B76F84009DF7C7 /* CurrencyInputViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrencyInputViewController.m; sourceTree = "<group>"; };
+		72D99FEB26B79C46009DF7C7 /* CurrencyOutputViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrencyOutputViewController.h; sourceTree = "<group>"; };
+		72D99FEC26B79C98009DF7C7 /* CurrencyOutputViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrencyOutputViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +91,7 @@
 			children = (
 				72D99FE926B77023009DF7C7 /* Main Page */,
 				72D99FE526B76F21009DF7C7 /* Currency Input  */,
+				72D99FEA26B79C2E009DF7C7 /* Current Output */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -108,6 +112,15 @@
 				7283C37026B766930044D8E9 /* ViewController.m */,
 			);
 			path = "Main Page";
+			sourceTree = "<group>";
+		};
+		72D99FEA26B79C2E009DF7C7 /* Current Output */ = {
+			isa = PBXGroup;
+			children = (
+				72D99FEB26B79C46009DF7C7 /* CurrencyOutputViewController.h */,
+				72D99FEC26B79C98009DF7C7 /* CurrencyOutputViewController.m */,
+			);
+			path = "Current Output";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +191,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72D99FED26B79C98009DF7C7 /* CurrencyOutputViewController.m in Sources */,
 				7283C37126B766930044D8E9 /* ViewController.m in Sources */,
 				72D99FE826B76F84009DF7C7 /* CurrencyInputViewController.m in Sources */,
 				7283C36B26B766930044D8E9 /* AppDelegate.m in Sources */,
