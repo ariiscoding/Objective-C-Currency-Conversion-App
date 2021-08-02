@@ -13,6 +13,7 @@
 		7283C37626B766930044D8E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7283C37526B766930044D8E9 /* Assets.xcassets */; };
 		7283C37926B766930044D8E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7283C37726B766930044D8E9 /* LaunchScreen.storyboard */; };
 		7283C37C26B766930044D8E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7283C37B26B766930044D8E9 /* main.m */; };
+		72D99FE826B76F84009DF7C7 /* CurrencyInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D99FE726B76F84009DF7C7 /* CurrencyInputViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,8 @@
 		7283C37826B766930044D8E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7283C37A26B766930044D8E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7283C37B26B766930044D8E9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		72D99FE626B76F39009DF7C7 /* CurrencyInputViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrencyInputViewController.h; sourceTree = "<group>"; };
+		72D99FE726B76F84009DF7C7 /* CurrencyInputViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrencyInputViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,10 +86,28 @@
 		7283C38326B766AA0044D8E9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				72D99FE926B77023009DF7C7 /* Main Page */,
+				72D99FE526B76F21009DF7C7 /* Currency Input  */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		72D99FE526B76F21009DF7C7 /* Currency Input  */ = {
+			isa = PBXGroup;
+			children = (
+				72D99FE626B76F39009DF7C7 /* CurrencyInputViewController.h */,
+				72D99FE726B76F84009DF7C7 /* CurrencyInputViewController.m */,
+			);
+			path = "Currency Input ";
+			sourceTree = "<group>";
+		};
+		72D99FE926B77023009DF7C7 /* Main Page */ = {
+			isa = PBXGroup;
+			children = (
 				7283C36F26B766930044D8E9 /* ViewController.h */,
 				7283C37026B766930044D8E9 /* ViewController.m */,
 			);
-			path = "View Controllers";
+			path = "Main Page";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7283C37126B766930044D8E9 /* ViewController.m in Sources */,
+				72D99FE826B76F84009DF7C7 /* CurrencyInputViewController.m in Sources */,
 				7283C36B26B766930044D8E9 /* AppDelegate.m in Sources */,
 				7283C37C26B766930044D8E9 /* main.m in Sources */,
 				7283C36E26B766930044D8E9 /* SceneDelegate.m in Sources */,
