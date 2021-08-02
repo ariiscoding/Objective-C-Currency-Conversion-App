@@ -16,6 +16,7 @@
 
 // MARK: - Properties
 CurrencyInputViewController *_inputView;
+UIButton *_convertButton;
 
 
 // MARK: - Lifecycle
@@ -34,6 +35,7 @@ CurrencyInputViewController *_inputView;
 
 - (void)setUpViews {
     [self setUpInputView];
+    [self setUpConvertButton];
 }
 
 - (void)setUpInputView {
@@ -42,12 +44,20 @@ CurrencyInputViewController *_inputView;
     [self.view addSubview:_inputView.view];
 }
 
+- (void)setUpConvertButton {
+    _convertButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [_convertButton setTitle:@"Convert" forState:UIControlStateNormal];
+    
+    [self.view addSubview:_convertButton];
+}
+
 
 
 // MARK: - Constraints
 
 - (void)setUpConstraints {
     [self setUpInputViewConstraints];
+    [self setUpConvertButtonConstraints];
 }
 
 - (void)setUpInputViewConstraints {
@@ -62,7 +72,7 @@ CurrencyInputViewController *_inputView;
     NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:100];
     
     // Bottom
-    NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationLessThanOrEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
+//    NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
     
     // Leading
     NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:self.view attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0];
@@ -74,9 +84,26 @@ CurrencyInputViewController *_inputView;
     NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:50];
 
     // Activation
-    NSArray *constraints = [NSArray arrayWithObjects:centerX, top, bottom, leading, trailing, height, nil];
+    NSArray *constraints = [NSArray arrayWithObjects:centerX, top, leading, trailing, height, nil];
     
     [self.view addConstraints: constraints];
+}
+
+- (void)setUpConvertButtonConstraints {
+    [_convertButton setTranslatesAutoresizingMaskIntoConstraints:FALSE];
+    
+    // Top
+    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:_convertButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_inputView.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:30];
+    
+    // Center X
+    NSLayoutConstraint *centerX = [NSLayoutConstraint constraintWithItem:_convertButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+    
+    // Height
+    NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:_convertButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationLessThanOrEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:100];
+    
+    // Activation
+    NSArray *constraints = [NSArray arrayWithObjects: top, centerX, height, nil];
+    [self.view addConstraints:constraints];
 }
 
 
