@@ -55,7 +55,6 @@ UILabel *_currencyLabel;
     [_horizontalStack addArrangedSubview:_currencyLabel];
 }
 
-
 // MARK: - Constraints
 
 - (void)setUpConstraints {
@@ -91,7 +90,6 @@ UILabel *_currencyLabel;
     
     [_currencyInputField addConstraint:height];
 }
-
 
 // MARK: - Intents
 
