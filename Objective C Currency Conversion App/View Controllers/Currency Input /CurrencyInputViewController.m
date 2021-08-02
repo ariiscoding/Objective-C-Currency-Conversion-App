@@ -12,6 +12,7 @@
 // MARK: - Properties
 UIStackView *_horizontalStack;
 UITextField *_currencyInputField;
+UILabel *_currencyLabel;
 
 
 // MARK: - Lifecycle
@@ -27,22 +28,31 @@ UITextField *_currencyInputField;
 
 - (void)setUpSubviews {
     [self setUpHorizontalStack];
+    [self setUpCurrencyInputField];
+    [self setUpCurrencyLabel];
 }
 
 - (void)setUpHorizontalStack {
     _horizontalStack = [UIStackView new];
     [_horizontalStack setAxis:UILayoutConstraintAxisHorizontal];
+    [_horizontalStack setSpacing:10];
     
     [self.view addSubview:_horizontalStack];
-    
-    UILabel *tempLabel = [UILabel new];
-    [tempLabel setText: @"Test Text"];
-    
-    [_horizontalStack addArrangedSubview:tempLabel];
 }
 
 - (void)setUpCurrencyInputField {
+    _currencyInputField = [UITextField new];
+    [_currencyInputField setPlaceholder:@"Enter a value"];
+    [_currencyInputField setBorderStyle:UITextBorderStyleRoundedRect];
     
+    [_horizontalStack addArrangedSubview:_currencyInputField];
+}
+
+- (void)setUpCurrencyLabel {
+    _currencyLabel = [UILabel new];
+    [_currencyLabel setText:@"in US Dollars"];
+    
+    [_horizontalStack addArrangedSubview:_currencyLabel];
 }
 
 
@@ -50,6 +60,7 @@ UITextField *_currencyInputField;
 
 - (void)setUpConstraints {
     [self setUpHorizontalStackConstraints];
+    [self setUpCurrencyInputFieldConstraints];
 }
 
 - (void)setUpHorizontalStackConstraints {
@@ -65,6 +76,20 @@ UITextField *_currencyInputField;
     NSArray *constraints = [NSArray arrayWithObjects:centerX, centerY, nil];
     
     [self.view addConstraints:constraints];
+}
+
+- (void)setUpCurrencyInputFieldConstraints {
+    [_currencyInputField setTranslatesAutoresizingMaskIntoConstraints:FALSE];
+    
+    // Width
+    NSLayoutConstraint *width = [NSLayoutConstraint constraintWithItem:_currencyInputField attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:200];
+    
+    [_currencyInputField addConstraint:width];
+    
+    // Height
+    NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:_currencyInputField attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:30];
+    
+    [_currencyInputField addConstraint:height];
 }
 
 
