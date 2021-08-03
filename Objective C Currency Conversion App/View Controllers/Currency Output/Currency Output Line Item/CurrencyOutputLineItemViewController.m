@@ -42,6 +42,7 @@ UILabel *_currencyAmountLabel;
 
 - (void)setUpCurrencyTypeLabel {
     _currencyTypeLabel = [UILabel new];
+    [_currencyTypeLabel setText:@"Please set a currency type"];
     
     [_horizontalStack addArrangedSubview:_currencyTypeLabel];
 }
@@ -82,10 +83,14 @@ UILabel *_currencyAmountLabel;
 
 - (void)setCurrencyType: (NSString*)currencyType {
     [_currencyTypeLabel setText:currencyType];
+    
+    [self.view sizeToFit];
 }
 
 - (void)setCurrencyAmountString: (NSString*)amount {
     [_currencyAmountLabel setText:amount];
+    
+    [self.view sizeToFit];
 }
 
 - (void)setCurrencyAmount: (double)amount {
