@@ -32,6 +32,7 @@ UIStackView *_verticalStack;
 // MARK: - View Setups
 
 - (void)setUpSubviews {
+    // TODO: Stop using the stack
     [self setUpVerticalStack];
     
     [self setUpCnyLine];
