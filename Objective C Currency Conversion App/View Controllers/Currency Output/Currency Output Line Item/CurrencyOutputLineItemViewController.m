@@ -81,11 +81,11 @@ UILabel *_currencyAmountLabel;
 // MARK: - Intents
 
 - (void)setCurrencyType: (NSString*)currencyType {
-    _currencyTypeLabel.text = currencyType;
+    [_currencyTypeLabel setText:currencyType];
 }
 
 - (void)setCurrencyAmountString: (NSString*)amount {
-    _currencyAmountLabel.text = amount;
+    [_currencyAmountLabel setText:amount];
 }
 
 - (void)setCurrencyAmount: (double)amount {

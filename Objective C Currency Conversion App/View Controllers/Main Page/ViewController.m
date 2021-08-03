@@ -7,6 +7,7 @@
 
 #import "ViewController.h"
 #import "CurrencyInputViewController.h"
+#import "CurrencyOutputViewController.h"
 
 @interface ViewController ()
 
@@ -15,8 +16,9 @@
 @implementation ViewController
 
 // MARK: - Properties
-CurrencyInputViewController *_inputView;
+CurrencyInputViewController *_inputViewController;
 UIButton *_convertButton;
+CurrencyOutputViewController *_outputViewController;
 
 
 // MARK: - Lifecycle
@@ -36,12 +38,13 @@ UIButton *_convertButton;
 - (void)setUpViews {
     [self setUpInputView];
     [self setUpConvertButton];
+    [self setUpOutputViewController];
 }
 
 - (void)setUpInputView {
-    _inputView = [CurrencyInputViewController new];
+    _inputViewController = [CurrencyInputViewController new];
     
-    [self.view addSubview:_inputView.view];
+    [self.view addSubview:_inputViewController.view];
 }
 
 - (void)setUpConvertButton {
@@ -51,6 +54,12 @@ UIButton *_convertButton;
     [self.view addSubview:_convertButton];
 }
 
+- (void)setUpOutputViewController {
+    _outputViewController = [CurrencyOutputViewController new];
+    
+    [self.view addSubview:_outputViewController.view];
+}
+
 
 
 // MARK: - Constraints
@@ -58,10 +67,11 @@ UIButton *_convertButton;
 - (void)setUpConstraints {
     [self setUpInputViewConstraints];
     [self setUpConvertButtonConstraints];
+    [self setUpOutputViewConstraints];
 }
 
 - (void)setUpInputViewConstraints {
-    UIView *view = _inputView.view;
+    UIView *view = _inputViewController.view;
     
     [view setTranslatesAutoresizingMaskIntoConstraints:FALSE];
     
@@ -93,7 +103,7 @@ UIButton *_convertButton;
     [_convertButton setTranslatesAutoresizingMaskIntoConstraints:FALSE];
     
     // Top
-    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:_convertButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_inputView.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:30];
+    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:_convertButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_inputViewController.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:30];
     
     // Center X
     NSLayoutConstraint *centerX = [NSLayoutConstraint constraintWithItem:_convertButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
@@ -104,6 +114,33 @@ UIButton *_convertButton;
     // Activation
     NSArray *constraints = [NSArray arrayWithObjects: top, centerX, height, nil];
     [self.view addConstraints:constraints];
+}
+
+- (void)setUpOutputViewConstraints {
+    UIView *outputView = _outputViewController.view;
+    
+    [outputView setTranslatesAutoresizingMaskIntoConstraints:FALSE];
+    
+    CGFloat horizontalSpacing = 30;
+    
+    // Top
+    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:outputView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_convertButton attribute:NSLayoutAttributeBottom multiplier:1.0 constant:30];
+    
+    // Bottom
+//    NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:outputView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationLessThanOrEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:50];
+    
+    // Height
+    NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:outputView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:400];
+    
+    // Leading
+    NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:outputView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeading multiplier:1.0 constant:horizontalSpacing];
+    
+    // Trailing
+    NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:outputView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:-horizontalSpacing];
+    
+    // Activation
+    NSArray *constraints = [NSArray arrayWithObjects:top, height, leading, trailing, nil];
+    [self.view addConstraints: constraints];
 }
 
 
