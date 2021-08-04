@@ -38,11 +38,13 @@ CRCurrencyResults *conversionRates;
 /// Start loading conversion rates.
 - (void)sendRequest {
     
-    if (conversionRates == nil) {
-        req = [CRCurrencyRequest new];
-        req.delegate = self;
-        [req start];
-    }
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if (conversionRates == nil) {
+            req = [CRCurrencyRequest new];
+            req.delegate = self;
+            [req start];
+        }
+    });
 }
 
 - (void)finishConversion {

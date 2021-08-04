@@ -7,6 +7,7 @@
 
 #import "CurrencyOutputViewController.h"
 #import "CurrencyOutputLineItemViewController.h"
+#import "CurrencyConverter.h"
 
 @implementation CurrencyOutputViewController
 
@@ -16,6 +17,7 @@ CurrencyOutputLineItemViewController *_chfLine;
 CurrencyOutputLineItemViewController *_gbpLine;
 CurrencyOutputLineItemViewController *_eurLine;
 
+CurrencyConverter* converter;
 
 
 // MARK: - Lifecycle
@@ -25,6 +27,8 @@ CurrencyOutputLineItemViewController *_eurLine;
     
     [self setUpSubviews];
     [self setUpConstraints];
+    
+    converter = [CurrencyConverter new];
 }
 
 // MARK: - View Setups
@@ -111,11 +115,27 @@ CurrencyOutputLineItemViewController *_eurLine;
 // MARK: - Intents
 
 - (void)setDollarValueTo:(double)newValue {
-    // TODO: Implement
+    [converter convertUsd:newValue completion:^(NSDictionary *output) {
+        [self finishConversion:output];
+    }];
 }
 
 
 // MARK: - Helper Methods
 
+- (void)finishConversion: (NSDictionary*)output {
+    [self loadValueForKey:@"chf" line:_chfLine dictionary:output];
+    [self loadValueForKey:@"gbp" line:_gbpLine dictionary:output];
+    [self loadValueForKey:@"eur" line:_eurLine dictionary:output];
+}
+
+- (void)loadValueForKey: (NSString*)key line: (CurrencyOutputLineItemViewController*)line dictionary: (NSDictionary*)dictionary {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([dictionary valueForKey:key] != nil) {
+            NSNumber *number = [dictionary valueForKey:key] ;
+            [line setCurrencyAmount: number.doubleValue];
+        }
+    });
+}
 
 @end
