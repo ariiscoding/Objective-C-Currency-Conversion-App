@@ -9,6 +9,7 @@
 #define CurrencyOutputViewController_h
 
 #import <UIKit/UIKit.h>
+#import "CurrencyOutputLineItemViewController.h"
 
 @interface CurrencyOutputViewController : UIViewController
 

@@ -6,16 +6,18 @@
 //
 
 #import "CurrencyOutputViewController.h"
-#import "CurrencyOutputLineItemViewController.h"
+//#import "CurrencyOutputLineItemViewController.h"
 #import "CurrencyConverter.h"
 
 @implementation CurrencyOutputViewController
 
 // MARK: - Properties
 
+// TODO: Stop using this, and use a simple UILable instead. 
 CurrencyOutputLineItemViewController *_chfLine;
 CurrencyOutputLineItemViewController *_gbpLine;
 CurrencyOutputLineItemViewController *_eurLine;
+
 
 CurrencyConverter* converter;
 
@@ -41,7 +43,7 @@ CurrencyConverter* converter;
 }
 
 - (void)setUpChfLine {
-    _chfLine = [CurrencyOutputLineItemViewController new];
+    _chfLine = [[CurrencyOutputLineItemViewController alloc] init];
     
     [self.view addSubview:_chfLine.view];
     
@@ -49,7 +51,7 @@ CurrencyConverter* converter;
 }
 
 - (void)setUpGbpLine {
-    _gbpLine = [CurrencyOutputLineItemViewController new];
+    _gbpLine = [[CurrencyOutputLineItemViewController alloc] init];
     
     [self.view addSubview:_gbpLine.view];
     
@@ -57,7 +59,7 @@ CurrencyConverter* converter;
 }
 
 - (void)setUpEurLine {
-    _eurLine = [CurrencyOutputLineItemViewController new];
+    _eurLine = [[CurrencyOutputLineItemViewController alloc] init];
     
     [self.view addSubview:_eurLine.view];
     
@@ -134,6 +136,10 @@ CurrencyConverter* converter;
         if ([dictionary valueForKey:key] != nil) {
             NSNumber *number = [dictionary valueForKey:key] ;
             [line setCurrencyAmount: number.doubleValue];
+            
+            NSLog(@"Set value for key %@ as %@", key, [number stringValue]);
+        } else {
+            NSLog(@"Cannot find value for key %@", key);
         }
     });
 }

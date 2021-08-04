@@ -18,7 +18,7 @@
 @property (nonatomic, copy, nullable) NSNumber *currentUsd;
 
 
-- (void)convertUsd: (double)usd completion: (void (^_Nonnull) (NSDictionary*))completion;
+- (void)convertUsd: (double)usd completion: (void (^_Nonnull) (NSDictionary*_Nonnull))completion;
 
 @end
 
