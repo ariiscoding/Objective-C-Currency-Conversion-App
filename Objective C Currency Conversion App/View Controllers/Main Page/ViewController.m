@@ -58,6 +58,8 @@ CurrencyOutputViewController *_outputViewController;
     _outputViewController = [CurrencyOutputViewController new];
     
     [self.view addSubview:_outputViewController.view];
+    
+    [_convertButton addTarget:self action:@selector(didClickConvert) forControlEvents:UIControlEventTouchUpInside];
 }
 
 
@@ -145,5 +147,11 @@ CurrencyOutputViewController *_outputViewController;
 
 
 // MARK: - Helper Methods
+
+- (void)didClickConvert {
+    double usd = [_inputViewController getCurrentDoubleValue];
+    
+    [_outputViewController setDollarValueTo:usd];
+}
 
 @end

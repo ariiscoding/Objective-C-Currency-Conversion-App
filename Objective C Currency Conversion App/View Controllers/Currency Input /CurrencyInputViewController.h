@@ -12,6 +12,8 @@
 
 @interface CurrencyInputViewController : UIViewController
 
+- (double)getCurrentDoubleValue;
+
 @end
 
 

@@ -93,4 +93,8 @@ UILabel *_currencyLabel;
 
 // MARK: - Intents
 
+- (double)getCurrentDoubleValue {
+    return [_currencyInputField.text doubleValue];
+}
+
 @end
