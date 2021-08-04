@@ -12,7 +12,7 @@
 
 // MARK: - Properties
 
-CurrencyOutputLineItemViewController *_cnyLine;
+CurrencyOutputLineItemViewController *_chfLine;
 CurrencyOutputLineItemViewController *_gbpLine;
 CurrencyOutputLineItemViewController *_eurLine;
 
@@ -31,17 +31,17 @@ CurrencyOutputLineItemViewController *_eurLine;
 
 - (void)setUpSubviews {
     // TODO: Stop using the stack
-    [self setUpCnyLine];
+    [self setUpChfLine];
     [self setUpGbpLine];
     [self setUpEurLine];
 }
 
-- (void)setUpCnyLine {
-    _cnyLine = [CurrencyOutputLineItemViewController new];
+- (void)setUpChfLine {
+    _chfLine = [CurrencyOutputLineItemViewController new];
     
-    [self.view addSubview:_cnyLine.view];
+    [self.view addSubview:_chfLine.view];
     
-    [_cnyLine setCurrencyType:@"Chinese Yuan"];
+    [_chfLine setCurrencyType:@"Swiss Franc"];
 }
 
 - (void)setUpGbpLine {
@@ -102,8 +102,8 @@ CurrencyOutputLineItemViewController *_eurLine;
 }
 
 - (void)setConstraintsForAllLines {
-    [self setConstraintForLineItem:_cnyLine withLineOnTop:nil];
-    [self setConstraintForLineItem:_gbpLine withLineOnTop:_cnyLine];
+    [self setConstraintForLineItem:_chfLine withLineOnTop:nil];
+    [self setConstraintForLineItem:_gbpLine withLineOnTop:_chfLine];
     [self setConstraintForLineItem:_eurLine withLineOnTop:_gbpLine];
 }
 

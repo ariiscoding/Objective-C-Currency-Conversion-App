@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,7 @@
 		7283C37626B766930044D8E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7283C37526B766930044D8E9 /* Assets.xcassets */; };
 		7283C37926B766930044D8E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7283C37726B766930044D8E9 /* LaunchScreen.storyboard */; };
 		7283C37C26B766930044D8E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7283C37B26B766930044D8E9 /* main.m */; };
+		72A5341E26BA115B0069B90C /* CurrencyConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A5341D26BA115B0069B90C /* CurrencyConverter.m */; };
 		72D99FE826B76F84009DF7C7 /* CurrencyInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D99FE726B76F84009DF7C7 /* CurrencyInputViewController.m */; };
 		72D99FED26B79C98009DF7C7 /* CurrencyOutputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D99FEC26B79C98009DF7C7 /* CurrencyOutputViewController.m */; };
 		72D99FF126B7CE50009DF7C7 /* CurrencyOutputLineItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D99FF026B7CE4F009DF7C7 /* CurrencyOutputLineItemViewController.m */; };
@@ -33,6 +34,8 @@
 		7283C37826B766930044D8E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7283C37A26B766930044D8E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7283C37B26B766930044D8E9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		72A5341C26BA11450069B90C /* CurrencyConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrencyConverter.h; sourceTree = "<group>"; };
+		72A5341D26BA115B0069B90C /* CurrencyConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrencyConverter.m; sourceTree = "<group>"; };
 		72D99FE626B76F39009DF7C7 /* CurrencyInputViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrencyInputViewController.h; sourceTree = "<group>"; };
 		72D99FE726B76F84009DF7C7 /* CurrencyInputViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrencyInputViewController.m; sourceTree = "<group>"; };
 		72D99FEB26B79C46009DF7C7 /* CurrencyOutputViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrencyOutputViewController.h; sourceTree = "<group>"; };
@@ -77,6 +80,7 @@
 			children = (
 				7283C38226B7669C0044D8E9 /* App Startup */,
 				7283C38326B766AA0044D8E9 /* View Controllers */,
+				72A5341B26BA111D0069B90C /* Logic */,
 				7283C37526B766930044D8E9 /* Assets.xcassets */,
 				7283C37726B766930044D8E9 /* LaunchScreen.storyboard */,
 				7283C37A26B766930044D8E9 /* Info.plist */,
@@ -104,6 +108,15 @@
 				72D99FEA26B79C2E009DF7C7 /* Currency Output */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		72A5341B26BA111D0069B90C /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				72A5341C26BA11450069B90C /* CurrencyConverter.h */,
+				72A5341D26BA115B0069B90C /* CurrencyConverter.m */,
+			);
+			path = Logic;
 			sourceTree = "<group>";
 		};
 		72D99FE526B76F21009DF7C7 /* Currency Input  */ = {
@@ -149,7 +162,6 @@
 				CB4094D41F3EEFC762D1EF16 /* Pods-Objective C Currency Conversion App.debug.xcconfig */,
 				5DC5E2403EF0861B684890DF /* Pods-Objective C Currency Conversion App.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -274,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72D99FED26B79C98009DF7C7 /* CurrencyOutputViewController.m in Sources */,
+				72A5341E26BA115B0069B90C /* CurrencyConverter.m in Sources */,
 				7283C37126B766930044D8E9 /* ViewController.m in Sources */,
 				72D99FE826B76F84009DF7C7 /* CurrencyInputViewController.m in Sources */,
 				7283C36B26B766930044D8E9 /* AppDelegate.m in Sources */,
