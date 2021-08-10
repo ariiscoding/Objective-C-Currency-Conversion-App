@@ -19,7 +19,7 @@ CurrencyOutputLineItemViewController *_gbpLine;
 CurrencyOutputLineItemViewController *_eurLine;
 
 
-CurrencyConverter* converter;
+CurrencyConverter *converter;
 
 
 // MARK: - Lifecycle

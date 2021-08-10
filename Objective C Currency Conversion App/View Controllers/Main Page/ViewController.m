@@ -8,6 +8,7 @@
 #import "ViewController.h"
 #import "CurrencyInputViewController.h"
 #import "CurrencyOutputViewController.h"
+#import "CurrencyConverter.h"
 
 @interface ViewController ()
 
@@ -19,18 +20,22 @@
 CurrencyInputViewController *_inputViewController;
 UIButton *_convertButton;
 CurrencyOutputViewController *_outputViewController;
+UILabel *currencyOutputLabel;
+
+CurrencyConverter *converter;
 
 
 // MARK: - Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     [self.view setBackgroundColor:UIColor.whiteColor];
     
     [self setUpViews];
     [self setUpConstraints];
+    
+    converter = [CurrencyConverter new];
 }
 
 // MARK: - View Setups
@@ -38,7 +43,8 @@ CurrencyOutputViewController *_outputViewController;
 - (void)setUpViews {
     [self setUpInputView];
     [self setUpConvertButton];
-    [self setUpOutputViewController];
+//    [self setUpOutputViewController];
+    [self setUpCurrencyOutputLabel];
 }
 
 - (void)setUpInputView {
@@ -51,6 +57,8 @@ CurrencyOutputViewController *_outputViewController;
     _convertButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [_convertButton setTitle:@"Convert" forState:UIControlStateNormal];
     
+    [_convertButton addTarget:self action:@selector(didClickConvert) forControlEvents:UIControlEventTouchUpInside];
+    
     [self.view addSubview:_convertButton];
 }
 
@@ -62,6 +70,14 @@ CurrencyOutputViewController *_outputViewController;
     [_convertButton addTarget:self action:@selector(didClickConvert) forControlEvents:UIControlEventTouchUpInside];
 }
 
+- (void)setUpCurrencyOutputLabel {
+    currencyOutputLabel = [UILabel new];
+    
+    [self.view addSubview:currencyOutputLabel];
+    
+    [currencyOutputLabel setText:@"Add a value in usd to begin"];
+    [currencyOutputLabel setNumberOfLines:0];
+}
 
 
 // MARK: - Constraints
@@ -69,7 +85,8 @@ CurrencyOutputViewController *_outputViewController;
 - (void)setUpConstraints {
     [self setUpInputViewConstraints];
     [self setUpConvertButtonConstraints];
-    [self setUpOutputViewConstraints];
+//    [self setUpOutputViewConstraints];
+    [self setUpOutputLabelConstraints];
 }
 
 - (void)setUpInputViewConstraints {
@@ -145,13 +162,74 @@ CurrencyOutputViewController *_outputViewController;
     [self.view addConstraints: constraints];
 }
 
+- (void)setUpOutputLabelConstraints {
+    [currencyOutputLabel setTranslatesAutoresizingMaskIntoConstraints:FALSE];
+    
+    // Top
+    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:currencyOutputLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_convertButton attribute:NSLayoutAttributeBottom multiplier:1.0 constant:30];
+    
+    // Height
+    NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:currencyOutputLabel attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationLessThanOrEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:500];
+    
+    // Leading
+    NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:currencyOutputLabel attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeading multiplier:1.0 constant:50];
+    
+    // Trailing
+    NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:currencyOutputLabel attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:self.view attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:50];
+    
+    // Activation
+    NSArray *constraints = [NSArray arrayWithObjects:top, leading, trailing, height, nil];
+    
+    [self.view addConstraints:constraints];
+}
+
 
 // MARK: - Helper Methods
 
 - (void)didClickConvert {
     double usd = [_inputViewController getCurrentDoubleValue];
     
-    [_outputViewController setDollarValueTo:usd];
+//    [_outputViewController setDollarValueTo:usd];
+    
+    NSLog(@"Conversion starts");
+    
+    [converter convertUsd:usd completion:^(NSDictionary *output) {
+        [self finishConversion:output];
+    }];
 }
+
+- (void)finishConversion: (NSDictionary*)output {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSMutableString *outputString = [NSMutableString new];
+        
+        [outputString appendString:[self getValueForKey:@"chf" dictionary:output]];
+        [outputString appendString:[self getValueForKey:@"gbp" dictionary:output]];
+        [outputString appendString:[self getValueForKey:@"eur" dictionary:output]];
+        
+        [currencyOutputLabel setText: outputString];
+        
+        NSLog(@"Setting text to %@", outputString);
+    });
+}
+
+- (NSString*)getValueForKey:(NSString*)key dictionary: (NSDictionary*)dictionary {
+    if ([dictionary valueForKey:key] != nil) {
+        NSNumber *number = [dictionary valueForKey:key];
+        
+        return [NSString stringWithFormat:@"%@: %@ %@", key, [self round:number], @"\n"];
+    } else {
+        return @"";
+    }
+}
+
+- (NSString*)round: (NSNumber*)number {
+    NSNumberFormatter *formatter = [NSNumberFormatter new];
+    
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [formatter setMaximumFractionDigits:2];
+    
+    return [formatter stringFromNumber:number];
+}
+
 
 @end
